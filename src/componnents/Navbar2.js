@@ -19,8 +19,8 @@ const Navbar2 = (props, value) => {
   // const [state, dispatch] = useContext(ThemeContext)
   const [state, setIsDark] = useContext(UserContext);
 
-  debugger
-  if (state === true) {
+  // debugger
+  if (state === false) {
 
 
     return (
