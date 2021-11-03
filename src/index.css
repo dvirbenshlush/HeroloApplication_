@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.DailyForecasts-container {
+  width: 10%;
+  background: #3eb8a3;
+  border-radius: 60px 60px 60px 60px;
+  top: 1000;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+
+  min-width: 200px;
+  min-height: 300px;
+  display: inline-table;
+}
+
+.span-container {
+  width: 10%;
+  background: #3eb8a3;
+  border-radius: 60px 60px 60px 60px;
+  top: 1000;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+
+  min-width: 200px;
+  min-height: 300px;
+  display: inline-table;
+}
