@@ -6,6 +6,10 @@ import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import React, { useEffect, useState, useContext, useReducer } from 'react';
 import { ThemeContext } from './../contexs/provider';
 import { UserContext } from './../App';
+import { Link } from 'react-router-dom';
+
+
+
 const Navbar2 = (props, value) => {
 
   const signOut = () => {
@@ -25,9 +29,9 @@ const Navbar2 = (props, value) => {
           <Container>
             <Navbar.Brand href="/">Herolo Application</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/Favorite">Favorite</Nav.Link>
-              <Nav.Link onClick={signOut}>Sign out</Nav.Link>
+              <Nav.Link > <Link to="/">Home</Link></Nav.Link>
+              <Nav.Link >  <Link to="/Favorite">Favorite</Link></Nav.Link>
+              <Nav.Link onClick={signOut}> <Link > Sign out</Link></Nav.Link>
             </Nav>
             <BootstrapSwitchButton onChange={() => setIsDark(!state) /*dispatch({ type: "toggle_button" })*/} checked={state} onstyle="dark" />
           </Container>
@@ -42,9 +46,13 @@ const Navbar2 = (props, value) => {
           <Container>
             <Navbar.Brand >Herolo Application</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/Favorite">Favorite</Nav.Link>
-              <Nav.Link onClick={signOut}>Sign out</Nav.Link>
+              <Nav.Link > <Link to="/">Home</Link></Nav.Link>
+              <Nav.Link >  <Link to="/Favorite">Favorite</Link></Nav.Link>
+              <Nav.Link onClick={signOut}> <Link > Sign out</Link></Nav.Link>
+
+
+
+
             </Nav>
             <BootstrapSwitchButton onChange={() => setIsDark(!state) /*dispatch({ type: "toggle_button" })*/} checked={state} onstyle="dark" />
           </Container>
