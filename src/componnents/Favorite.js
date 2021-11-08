@@ -19,7 +19,7 @@ const Favorite = (props)=>{
         for(let id in country){
           listOfCities.push(country[id])
         }
-        console.log(listOfCities)
+        // console.log(listOfCities)
         setListOfCities(listOfCities)
       })
      },[])

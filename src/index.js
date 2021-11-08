@@ -2,11 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { UserProvider } from './contexs/provider';
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+import isDark from './reducers/isDark'
+// import { UserProvider } from './contexs/provider';
+import allReducers from './reducers';
+
+const store = createStore(allReducers)
+store.subscribe(()=>console.log(store.getState()))
 ReactDOM.render(
   <React.StrictMode>
     {/* <UserProvider> */}
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
     {/* </UserProvider> */}
   </React.StrictMode>,
   document.getElementById('root')
