@@ -64,12 +64,12 @@ const App = (props) => {
         <Switch>
           {isUserSignedIn === true
             ? <>
-              <Route exact path="/" >
+              <Route exact path="/" component={MainPage} >
                 {/* <Navbar2
                 // mode={isDark} 
                 // isDarkFunction={isDarkFunction} 
                 /> */}
-                <MainPage />
+                {/* <MainPage /> */}
               </Route>
               {/* <Route exact path="/MainPage">
                 <Navbar2 mode={isDark} />
@@ -81,7 +81,8 @@ const App = (props) => {
                 /> */}
                 <Favorite />
               </Route>
-              <Route path="*"
+              <Route
+                path="*"
               // component={notfound} 
               >
                 <Notfound />
