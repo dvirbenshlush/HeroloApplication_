@@ -45,14 +45,17 @@ const MainPage = (props) => {
 
 
 
+    const corruntWeather = {city,corrunt}	
 
     const saveToFirebase = ()=>{
         const dbRef = firebase.database().ref('WeatherDB')
-        const corruntWeather = {city,corrunt}	
         dbRef.push(corruntWeather);
     }
 
-      
+  
+  
+
+   
 
       function get5Days(id){
         const base = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/`;

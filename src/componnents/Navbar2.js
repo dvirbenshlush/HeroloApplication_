@@ -10,24 +10,28 @@ import { Link } from 'react-router-dom';
 
 
 
+
 const Navbar2 = (props, value) => {
 
   const signOut = () => {
     firebase.auth().signOut();
   }
+  useEffect(()=>{
+    console.log(props.mode)
+  },[props])
 
   // const [state, dispatch] = useContext(ThemeContext)
   const [state, setIsDark] = useContext(UserContext);
 
   // debugger
-  if (state === false) {
+  if (props.mode === false) {
 
 
     return (
       <>
         <Navbar bg="light" variant="light">
           <Container>
-            <Navbar.Brand href="/">Herolo Application</Navbar.Brand>
+            <Navbar.Brand >Herolo Application</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link > <Link to="/">Home</Link></Nav.Link>
               <Nav.Link >  <Link to="/Favorite">Favorite</Link></Nav.Link>

@@ -11,9 +11,12 @@ import MainPage from './componnents/MainPage';
 import Navbar2 from './componnents/Navbar2';
 import Favorite from './componnents/Favorite';
 import SignIn from './componnents/SignIn';
+import { useSelector, useDispatch } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { UserProvider } from './contexs/provider';
 // import { Navbar } from 'react-bootstrap';
+import { changeMode } from './actions';
+
 
 
 function Notfound(props) {
@@ -24,6 +27,15 @@ function Notfound(props) {
 export const UserContext = React.createContext(null);
 
 const App = (props) => {
+  // const DarkMode =false;
+  const DarkMode = useSelector(state => state.isDark)
+
+  useEffect(() => {
+    console.log('redux result is ' + DarkMode)
+  }, [DarkMode])
+
+
+  const dispatch = useDispatch();
 
   const [isUserSignedIn, setIsUserSignedIn] = useState(true);
   const [isDark, setIsDark] = useState(false);
@@ -57,7 +69,7 @@ const App = (props) => {
         {/* <UserProvider> */}
         <UserContext.Provider value={[isDark, setIsDark]}>
           {isUserSignedIn && <Navbar2
-          // mode={isDark} 
+            mode={DarkMode}
           // isDarkFunction={isDarkFunction}
           />}
         </UserContext.Provider>
@@ -81,11 +93,8 @@ const App = (props) => {
                 /> */}
                 <Favorite />
               </Route>
-              <Route
-                path="*"
-              // component={notfound} 
-              >
-                <Notfound />
+              <Route path="*" >
+                {/* <Notfound /> */}
               </Route>
             </> : <>
               <Route exact path="/" component={SignIn}></Route>
@@ -99,7 +108,7 @@ const App = (props) => {
         </Switch>
         {/* </UserProvider> */}
       </Router>
-
+      <button onClick={() => dispatch(changeMode())}>changeMode</button>
       {/* <div>
         <div class="custom-control custom-switch">
           <input onClick={isDarkFunction} type="checkbox" class="custom-control-input" id="customSwitch1" />
