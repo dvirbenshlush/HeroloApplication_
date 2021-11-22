@@ -16,54 +16,57 @@ const styleSheet = makeStyles({
 });
 
 function DailyWeather(props) {
+  // debugger
   const result = props.data
-  const date = new Date(result.dt * 1000)
+  const date = new Date(result.Date)
   let weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  var weather = result.weather[0].main
-  let weatherIcon
-  const maxTemp = Math.round(result.temp.max)
-  const minTemp = Math.round(result.temp.min)
+  let weatherIcon = result.Day.Icon
+  // const maxTemp = Math.round(result.temp.max)
+  // const minTemp = Math.round(result.temp.min)
+  let { Maximum, Minimum } = result.Temperature //Math.round(result.temp.day)
+  // debugger
+  Maximum = Math.round(parseFloat(Maximum.Value))
+  Minimum = Math.round(parseFloat(Minimum.Value))
 
-
-  switch (weather) {
-    case 'Thunderstorm':
-      weatherIcon = thunderstorm
-      break
-    case 'Drizzle':
-      weatherIcon = drizzle
-      break
-    case 'Rain':
-      weatherIcon = rain
-      break
-    case 'Snow':
-      weatherIcon = snow
-      break
-    case 'Atmosphere':
-      weatherIcon = atmosphere
-      break
-    case 'Clear':
-      weatherIcon = clear
-      break
-    case 'Clouds':
-      weatherIcon = clouds
-      break
-    case 'Extreme':
-      weatherIcon = extreme
-      break
-    default:
-      weatherIcon = defaultIcon
-  }
-
-
+  // switch (weather) {
+  //   case 'Thunderstorm':
+  //     weatherIcon = thunderstorm
+  //     break
+  //   case 'Drizzle':
+  //     weatherIcon = drizzle
+  //     break
+  //   case 'Rain':
+  //     weatherIcon = rain
+  //     break
+  //   case 'Snow':
+  //     weatherIcon = snow
+  //     break
+  //   case 'Atmosphere':
+  //     weatherIcon = atmosphere
+  //     break
+  //   case 'Clear':
+  //     weatherIcon = clear
+  //     break
+  //   case 'Clouds':
+  //     weatherIcon = clouds
+  //     break
+  //   case 'Extreme':
+  //     weatherIcon = extreme
+  //     break
+  //   default:
+  //     weatherIcon = defaultIcon
+  // }
+  let day = weekday[date.getDay()]
+  // debugger
   return (
     <div>
       <center>
         <Typography type="display1">
-          {weekday[date.getDay()]}
+          {day}
         </Typography>
-        <img src={`${weatherIcon}`} alt="WeatherIcon" height="64" width="64" />
+        <img src={`/img/weather-icons/${weatherIcon}-s.png`} alt="WeatherIcon" height="64" width="64" />
         <Typography type="subheading" >
-          {`${maxTemp}° ${minTemp}°`}
+          {`${Maximum}° ${Minimum}°`}
         </Typography>
       </center>
     </div>

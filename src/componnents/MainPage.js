@@ -18,7 +18,7 @@ const MainPage = (props) => {
     const [loading, setloading] = useState(true);
     const [weather, setweather] = useState([])
     const [DailyForecasts, setDailyForecasts] = useState([])
-
+    const [Key, setKey] = useState("")
     // const [favorite, setFavorite] = useState('');
     // var a = JSON.stringify({})
     // const signOut = () => {
@@ -47,10 +47,12 @@ const MainPage = (props) => {
         })
             .then((dataParam) => {
                 setCity(dataParam.LocalizedName)
-                debugger
+                // debugger
+                setKey(dataParam.Key)
+                setweather(dataParam)
                 get5Days(dataParam.Key)
                 getCurrentConditions(dataParam.Key)
-                setloading(false)
+
             })
     }
 
@@ -82,6 +84,7 @@ const MainPage = (props) => {
             //     arr.push({ id: param.DailyForecasts[i].Temperature.Minimum.Value, name: param.DailyForecasts[i].Day.PrecipitationType })
             // }
             // setKeyOfCity(arr)
+            // debugger
             setDailyForecasts(param.DailyForecasts)
             console.log(param)
 
@@ -107,7 +110,9 @@ const MainPage = (props) => {
         }).then(function (param) {
             var arr = [];
             var temp;
+
             setCorrunt(param[0].Temperature.Metric.Value)
+            setloading(false)
             return param
         })
     }
@@ -132,7 +137,7 @@ const MainPage = (props) => {
                     {
                         (loading)
                             ? <p>Loading . . . </p>
-                            : <WeatherCard DailyForecasts={DailyForecasts} city={city} data={5} />
+                            : <WeatherCard DailyForecasts={DailyForecasts} weather={weather} wKey={Key} />
                     }
                 </div>
                 {/* 

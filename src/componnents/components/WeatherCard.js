@@ -36,16 +36,18 @@ const styleSheet = createStyles(theme => ({
 function SimpleCard(props) {
   const classes = props.classes;
   // debugger
-  const result = props.data[0] //[]
-  const cityName = props.city //result.city.name
-  const country = result.country.EnglishName
-  const today = new Date(props.DailyForecasts[0].EpochDate * 1000)
-  const weatherDescription = capitalizeFirstLetter(result.list[0].weather[0].description)
+  const { weather, DailyForecasts } = props
+
+  const cityName = weather.EnglishName //result.city.name
+  const country = weather.Country.EnglishName
+  // debugger
+  const today = new Date(DailyForecasts[0].Date)
+  const weatherDescription = DailyForecasts[0].Day.IconPhrase //capitalizeFirstLetter()
   const now = new Date()
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  // function capitalizeFirstLetter(string) {
+  //   return string.charAt(0).toUpperCase() + string.slice(1);
+  // }
 
   return (
     <div>
@@ -62,11 +64,11 @@ function SimpleCard(props) {
             {weatherDescription}
           </Typography>
           <div className={classes.flex}>
-            <CurrentWeather data={result.list[0]} />
-            <WeatherDetails data={result.list[0]} />
+            <CurrentWeather wKey={props.wKey} data={DailyForecasts[0]} />
+            {/* <WeatherDetails data={DailyForecasts[0]} /> */}
           </div>
           <div>
-            <WeeklyWeather data={result.list} />
+            <WeeklyWeather data={DailyForecasts} />
           </div>
 
 

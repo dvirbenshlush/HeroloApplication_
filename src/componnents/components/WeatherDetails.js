@@ -16,7 +16,7 @@ const styleSheet = makeStyles({
 function WeatherDetails(props) {
   const classes = props.classes;
   const result = props.data
-
+  debugger
   const humidity = Math.round(result.humidity)
   const windSpeed = result.speed
   const windDegree = result.deg
