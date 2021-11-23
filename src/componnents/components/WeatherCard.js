@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { withStyles, createStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import CurrentWeather from './CurrentWeather'
 import WeatherDetails from './WeatherDetails'
@@ -8,7 +8,7 @@ import WeeklyWeather from './WeeklyWeather'
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 
-const styleSheet = createStyles(theme => ({
+const styleSheet = makeStyles(theme => ({
   card: {
     minWidth: 275,
     marginBottom: 16,
@@ -21,11 +21,11 @@ const styleSheet = createStyles(theme => ({
   title: {
     marginBottom: 16,
     fontSize: 14,
-    color: theme.palette.text.secondary,
+    // color: theme.palette.text.secondary,
   },
   pos: {
     marginBottom: 12,
-    color: theme.palette.text.secondary,
+    // color:  theme.palette.text.secondary,
   },
   flex: {
     display: 'flex',
@@ -34,13 +34,16 @@ const styleSheet = createStyles(theme => ({
 }));
 
 function SimpleCard(props) {
-  const classes = props.classes;
+  // const classes = props.classes;
   // debugger
+  const classes = styleSheet();
+
   const { weather, DailyForecasts } = props
 
   const cityName = weather.EnglishName //result.city.name
   const country = weather.Country.EnglishName
   // debugger
+  console.log(DailyForecasts)
   const today = new Date(DailyForecasts[0].Date)
   const weatherDescription = DailyForecasts[0].Day.IconPhrase //capitalizeFirstLetter()
   const now = new Date()
@@ -48,7 +51,7 @@ function SimpleCard(props) {
   // function capitalizeFirstLetter(string) {
   //   return string.charAt(0).toUpperCase() + string.slice(1);
   // }
-
+  // debugger
   return (
     <div>
       <Card className={classes.card}>
@@ -68,7 +71,7 @@ function SimpleCard(props) {
             {/* <WeatherDetails data={DailyForecasts[0]} /> */}
           </div>
           <div>
-            <WeeklyWeather data={DailyForecasts} />
+            <WeeklyWeather data={[...DailyForecasts]} />
           </div>
 
 
@@ -83,4 +86,4 @@ function SimpleCard(props) {
 //   classes: PropTypes.object.isRequired,
 // };
 
-export default withStyles(styleSheet)(SimpleCard);
+export default SimpleCard;

@@ -127,7 +127,7 @@ const MainPage = (props) => {
         else
             setSubmit(true)
     }
-
+    // debugger
     return (
 
 
@@ -135,9 +135,9 @@ const MainPage = (props) => {
             <Container>
                 <div>
                     {
-                        (loading)
-                            ? <p>Loading . . . </p>
-                            : <WeatherCard DailyForecasts={DailyForecasts} weather={weather} wKey={Key} />
+                        (DailyForecasts.length > 0)
+                            ? <WeatherCard DailyForecasts={DailyForecasts} weather={weather} wKey={Key} />
+                            : <p>Loading . . . </p>
                     }
                 </div>
                 {/* 

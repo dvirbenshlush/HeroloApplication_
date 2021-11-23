@@ -14,7 +14,8 @@ const styleSheet = makeStyles({
 });
 
 function WeatherDetails(props) {
-  const classes = props.classes;
+  // const classes = props.classes;
+  const classes = styleSheet();
   const result = props.data
   debugger
   const humidity = Math.round(result.humidity)
@@ -69,4 +70,4 @@ WeatherDetails.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styleSheet)(WeatherDetails)
+export default WeatherDetails

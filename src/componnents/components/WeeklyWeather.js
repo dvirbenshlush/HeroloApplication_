@@ -11,8 +11,9 @@ const styleSheet = makeStyles(theme => ({
 }))
 
 function WeeklyWeather(props) {
+  const classes = styleSheet();
+  // const classes = props.classes;
   // debugger
-  const classes = props.classes;
   const result = props.data
   let days
   result.shift()
@@ -28,4 +29,4 @@ function WeeklyWeather(props) {
   )
 }
 
-export default withStyles(styleSheet)(WeeklyWeather);
+export default WeeklyWeather;

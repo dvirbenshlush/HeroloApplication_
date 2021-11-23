@@ -15,6 +15,7 @@ import { Star } from '@material-ui/icons';
 // import clouds from '../../assets/images/Cloudy.png'
 // import extreme from '../../assets/images/Extreme.png'
 // import defaultIcon from '../../assets/images/Partly-cloudy.png'
+import { useState } from 'react';
 
 
 
@@ -29,7 +30,9 @@ const styleSheet = makeStyles({
 });
 function CurrentWeather(props) {
   // debugger
-  const classes = props.classes
+  // const classes = props.classes
+  const classes = styleSheet();
+
   const result = props.data
   const wKey = props.wKey
   // var weatherText = result.Day.IconPhrase
@@ -153,12 +156,12 @@ function CurrentWeather(props) {
   // debugger
   Maximum = Math.round(parseFloat(Maximum.Value))
   Minimum = Math.round(parseFloat(Minimum.Value))
-
+  const [Favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('Favorites')) || [])
 
   // let Favorites = JSON.parse(localStorage.getItem('Favorites')) || [];
-  // const isFav = Favorites.includes(wKey)
+  const isFav = Favorites.includes(wKey)
   const saveToF = () => {
-    debugger
+    // debugger
     let Favorites = JSON.parse(localStorage.getItem('Favorites')) || []
     const isFav = Favorites.includes(wKey)
     if (isFav) {
@@ -169,19 +172,21 @@ function CurrentWeather(props) {
       Favorites.push(wKey);
     }
     localStorage.setItem('Favorites', JSON.stringify(Favorites));
-
+    setFavorites(Favorites)
   }
+
+  // debugger
   return (
     <div className={classes.root}>
       <div className={classes.flex}>
-        <img src={`/img/weather-icons/${weatherIcon}-s.png`} alt="WeatherIcon" />
+        <img src={`./img/weather-icons/${weatherIcon}-s.png`} alt="WeatherIcon" />
         <Typography type="display4"  >
           {`Minimum :  ${Minimum}°`}
         </Typography>
         <Typography type="display4"  >
           {`Maximum :  ${Maximum}°`}
         </Typography>
-        <IconButton onClick={saveToF} colorSecondary style={{ color: "blue" }}>
+        <IconButton onClick={saveToF} colorSecondary style={{ color: isFav ? "blue" : "green" }}>
           <Star></Star>
         </IconButton>
       </div>
@@ -193,4 +198,4 @@ CurrentWeather.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styleSheet)(CurrentWeather)
+export default CurrentWeather

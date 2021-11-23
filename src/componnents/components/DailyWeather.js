@@ -64,7 +64,8 @@ function DailyWeather(props) {
         <Typography type="display1">
           {day}
         </Typography>
-        <img src={`/img/weather-icons/${weatherIcon}-s.png`} alt="WeatherIcon" height="64" width="64" />
+        {/* `/img/weather-icons/${weatherIcon}-s.png` */}
+        <img src={`./img/weather-icons/${weatherIcon}-s.png`} alt="WeatherIcon" height="64" width="64" />
         <Typography type="subheading" >
           {`${Maximum}° ${Minimum}°`}
         </Typography>
